@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: appDeployment
+  name: app-deployment
   labels:
     app: app
 spec:
@@ -18,7 +18,7 @@ spec:
         - name: app
           image: vprocontainers/vprofileapp
           ports:
-            - name: appPort
+            - name: app-port
               containerPort: 8080
       initContainers:
         - name: wait-for-db

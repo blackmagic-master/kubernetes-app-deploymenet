@@ -4,9 +4,9 @@ metadata:
   name: vpromq01
 spec:
   selector: 
-    app: rmqApp
+    app: rmq-app
   ports:
     - port: 5672
-      targetPort: rmqPort
+      targetPort: rmq-port
       protocol: TCP
   type: ClusterIP

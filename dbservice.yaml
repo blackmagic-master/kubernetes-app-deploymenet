@@ -4,9 +4,9 @@ metadata:
   name: vprodb
 spec:
   selector: 
-    app: dbApp
+    app: db-app
   ports:
     - port: 3306
-      targetPort: dbPort
+      targetPort: db-port
       protocol: TCP
   type: ClusterIP
