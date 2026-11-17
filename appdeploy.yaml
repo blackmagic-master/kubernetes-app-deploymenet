@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appDeployment
+  labels:
+    app: app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app
+  template:
+    metadata:
+      labels:
+        app: app
+    spec:
+      containers:
+        - name: app
+          image: vprocontainers/vprofileapp
+          ports:
+            - name: appPort
+              containerPort: 8080
+      initContainers:
+        - name: wait-for-db
+          image: busybox
+          command: ['sh', '-c', 'until nc -z vprodb 3306; do echo waiting for db; sleep 2; done;']
+        - name: wait-for-rmq
+          image: busybox
+          command: ['sh', '-c', 'until nc -z vpromq01 5672; do echo waiting for rmq; sleep 2; done;']
+        - name: wait-for-mc
+          image: busybox
+          command: ['sh', '-c', 'until nc -z vprocache01 11211; do echo waiting for mc; sleep 2; done;']

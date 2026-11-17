@@ -3,11 +3,11 @@ kind: PersistentVolumeClaim
 metadata:
   name: dbPersistentVolumeClaim
   labels:
-    app: kubernetes-app
+    app: dbApp
 spec:
   resources:
     requests:
-      storage: 4Gi
+      storage: 2Gi
   accessModes:
     - ReadWriteOnce
   storageClassName: default
