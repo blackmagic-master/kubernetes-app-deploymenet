@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mcDeployment
+  labels:
+    app: mcApp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mcApp
+  template:
+    metadata:
+      labels:
+        app: mcApp
+    spec:
+      containers:
+        - name: mcApp
+          image: memcached
+          ports:
+            - name: mcPort
+              containerPort: 11211
